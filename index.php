@@ -5,36 +5,88 @@ if($_SESSION['active_user']!='') {
 }
 ?>
 <html>
-    <form id="login_form" method="post" action="pages/login_validation.php">
-        <label for="email"> Email:
-            <input type="email" name="email" class="text" placeholder=" Enter the UserName">
-        </label>
-        <br>
-        <label for="password"> Password
-            <input type="text" name="password" class="text" placeholder=" Enter the password">
-        </label>
-        <input type="submit" value="LOGIN">
+    <head>
+        <title>Login | Company</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+    <link rel="stylesheet" href="css/index.css">
+    <div id="wrapper" class="container">
+    <form id="login_form">
+
+        <div class="row">
+            <div class="col-2">
+                Email
+            </div>
+            <div class="col-3">
+                <input type="email" name="email" id="logInMail">
+            </div>
+
+            <div class="col-2">
+                Password
+            </div>
+            <div class="col-3">
+                <input type="password" name="password" id="logInPassword">
+            </div>
+
+            <Button id="logInButton" class="col-2"> LogIN </Button>
+        </div>
+        <div id="loginError"></div>
+
     </form>
 
-    <form id="signup_form" action="pages/signup.php" method="post">
-        <label for = "first_name">First Name
-            <input type="text" name="first_name">
-        </label>
 
-        <label for = "last_name">Last Name
-            <input type="text" name="last_name">
-        </label>
+        <form id="signUpForm">
+        <div class="row">
+            <div class="col-6">
+                First Name
+            </div>
+            <div class="col-6" id="first_name_div">
+                <input type="text" name="first_name" id="first_name">
+            </div>
+        </div>
 
-        <label for = "email">Email Address
-            <input type="email" name="email">
-        </label>
+        <div class="row">
+            <div class="col-6">
+                Last Name
+            </div>
+            <div class="col-6" id="last_name_div">
+                <input type="text" name="last_name" id="last_name">
+            </div>
+        </div>
 
-        <label for = "password">Password
-            <input type = "password" name="password">
-        </label>
+        <div class="row">
+            <div class="col-6">
+                Email
+            </div>
+            <div class="col-6" id="email_div">
+                <input type="email" name="email" id="email">
+            </div>
+        </div>
 
-        <input type="submit" value="submit">
-    </form>
+        <div class="row">
+            <div class="col-6">
+                Password
+            </div>
+            <div class="col-6" id="password_div">
+                <input type="password" name="password" id="password">
+            </div>
+        </div>
+        <button class="btn" id="signUpButton">SignUp</button>
+        <div id="signUpError"></div>
 
+        </form>
+    </div>
+
+
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="js/index.js"></script>
+    </body>
+
+
 </html>
