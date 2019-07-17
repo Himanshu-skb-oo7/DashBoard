@@ -40,8 +40,9 @@ $('#login_form').on('submit', function (e) {
             if(return_value.length>4 || return_value.length==2)
             {
                 window.location.href="http://localhost/dashboard/index.php";
+            } else  if(return_value.length==3) {
+                    $('#loginError').html("Wrong Password");
             } else {
-                    $('#loginError').html(return_value);
 
             }
 

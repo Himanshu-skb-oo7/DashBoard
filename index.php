@@ -13,23 +13,31 @@ if($_SESSION['active_user']!='') {
     <body>
     <div id="wrapper" class="container">
     <form id="login_form">
-
+        <legend id="loginLegend">Log In Form</legend>
         <div class="row">
-            <div class="col-2">
-                Email
-            </div>
-            <div class="col-3">
-                <input type="email" name="email" id="logInMail">
+            <div class="col-9">
+                <div class="row">
+                     <div class="col-4">
+                        Email
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" name="email" id="logInMail">
+                    </div>
+                </div>
+
+                <div class="row">
+                     <div class="col-4">
+                        Password
+                    </div>
+                    <div class="col-8">
+                        <input type="password" class="form-control" name="password" id="logInPassword">
+                    </div>
+                </div>
             </div>
 
-            <div class="col-2">
-                Password
-            </div>
             <div class="col-3">
-                <input type="password" name="password" id="logInPassword">
+                <Button id="logInButton" class="btn btn-success"> Log IN </Button>
             </div>
-
-            <Button id="logInButton" class="col-2"> LogIN </Button>
         </div>
         <div id="loginError"></div>
 
@@ -37,47 +45,48 @@ if($_SESSION['active_user']!='') {
 
 
         <form id="signUpForm">
+            <legend id="signUpLegend">Sign Up Form</legend>
         <div class="row">
-            <div class="col-6">
+            <div class="col-3">
                 First Name
             </div>
-            <div class="col-6" id="first_name_div">
-                <input type="text" name="first_name" id="first_name">
+            <div class="col-9" id="first_name_div">
+                <input type="text" name="first_name"  class="form-control" id="first_name">
             </div>
         </div>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-3">
                 Last Name
             </div>
-            <div class="col-6" id="last_name_div">
-                <input type="text" name="last_name" id="last_name">
+            <div class="col-9" id="last_name_div">
+                <input type="text" name="last_name" class="form-control"  id="last_name">
             </div>
         </div>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-3" class="div">
                 Email
             </div>
-            <div class="col-6" id="email_div">
-                <input type="email" name="email" id="email">
+            <div class="col-9" id="email_div">
+                <input type="email" name="email" class="form-control" id="email">
             </div>
         </div>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-3">
                 Password
             </div>
-            <div class="col-6" id="password_div">
-                <input type="password" name="password" id="password">
+            <div class="col-9" id="password_div">
+                <input type="password" name="password" class="form-control" id="password">
             </div>
         </div>
-        <button class="btn" id="signUpButton">SignUp</button>
-        <div id="signUpError"></div>
+
+            <button class="btn col-12" id="signUpButton">SignUp</button>
+            <div id="signUpError"></div>
 
         </form>
     </div>
-
 
     <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
