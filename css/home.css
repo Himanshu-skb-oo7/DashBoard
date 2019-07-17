@@ -1,0 +1,12 @@
+.menu-items
+{   display: block;
+    background-color: #8cee7d;
+    width: 100%;
+    padding:10px;
+    cursor: pointer;
+}
+
+#menubar
+{
+    display: inline-block;
+}

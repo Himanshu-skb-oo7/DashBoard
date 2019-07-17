@@ -8,9 +8,9 @@ if($_SESSION['active_user']!='') {
     <head>
         <title>Login | Company</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
-    <link rel="stylesheet" href="css/index.css">
     <div id="wrapper" class="container">
     <form id="login_form">
 
