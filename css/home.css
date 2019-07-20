@@ -1,12 +1,90 @@
-.menu-items
-{   display: block;
-    background-color: #8cee7d;
+body{
     width: 100%;
-    padding:10px;
-    cursor: pointer;
 }
 
-#menubar
+
+#home
 {
+
+    position: absolute;
+    width:78%;
+    margin-right: 10px;
+    top:40px;
+    right: 0;
     display: inline-block;
+    background-color: white;
+    padding: 0;
+    margin-bottom: 20px;
+    border:1px solid red;
+    height: 100%;
+}
+
+.dynamic_num_data
+{
+    color: black;
+    border:1px solid red;
+    padding:0px;
+    font-size: 30px;
+    font-weight: 700;
+    display: block;
+    background-color: transparent;
+    /*border:none;*/
+}
+
+.sub-heading-home
+{
+    font-size: 20px;
+    color: grey;
+    padding: 10px 0;
+}
+
+#on-demand-content
+{
+    padding:15px;
+    background-color: #F0EDE8;
+    width:100%;
+}
+
+.buttons-content
+{
+    border:1px solid blue;
+    width:100px;
+    padding-left:15px;
+}
+
+
+.buttons-content:hover
+{
+    background-color: white;
+}
+
+#on-demand-content-numbers-div
+{
+    padding-left:20px;
+    display: inline-block;
+    margin: 0;
+    width:200px;
+    border:1px solid grey;
+    font-size: 12px;
+    color: grey;
+    padding:0;
+    height: 100%;
+
+}
+
+#on-demand-content-chart
+{
+    margin:0;
+    display: inline-block;
+    border:1px solid red;
+    margin-left:10px;
+
+}
+
+#on-demand-content-list
+{
+    margin: 0;
+    margin-top: -100px;
+    display: inline-block;
+    border:1px solid red;
 }

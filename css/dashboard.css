@@ -8,6 +8,7 @@ body
     position: absolute;
     width:78%;
     margin-right: 10px;
+    top:40px;
     right: 0;
     display: inline-block;
     background-color: white;
@@ -126,6 +127,18 @@ radio
     padding-left: 0;
 }
 
+#apply
+{
+    position: absolute;
+    right: 35px;
+}
+
+#clear
+{
+    position: absolute;
+    right: 150px;
+}
+
 #display-header
 {
     margin:0 auto;
@@ -163,4 +176,74 @@ radio
 {
     background-color: dodgerblue;
     color: white;
+}
+
+#start-date
+{
+    margin-right:20px
+}
+
+#start-date, #end-date
+{
+    width:150px;
+    display: inline-block;
+
+}
+
+
+input
+{
+    padding:5px;
+    border:1px solid #d9d9d9;
+
+}
+
+input[type = "radio"]
+{
+    display: inline-block;
+    width: 40px;
+    border-radius: 0;
+}
+
+#radio-id
+{
+    margin:0;
+    padding-left: 0;
+    text-align: left;
+}
+
+.col-4
+{
+    font-weight: 700;
+}
+
+
+#form-div-2
+{
+    margin-top:20px;
+}
+
+
+#addClinician
+{
+    position: absolute;
+    right: 35px;
+    width: 200px;
+    padding: 10px ;
+    border:none;
+    box-shadow: 2px 2px grey;
+    background-color: #5EB85C;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#directory-heading
+{
+    padding-top: 20px ;
+    padding-bottom: 20px ;
+    width: 100%;
+    color: dodgerblue;
+    font-size: 20px;
+    font-weight: 500;
 }

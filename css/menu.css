@@ -3,10 +3,14 @@
     width: 100%;
     padding:10px;
     cursor: pointer;
+    border:2px solid transparent;
 }
 
 #menubar
 {
+    position: absolute;
+    top:40px;
+    left: 0;
     width: 20%;
     display: inline-block;
     height: 90%;

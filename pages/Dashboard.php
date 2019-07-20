@@ -7,23 +7,26 @@
 <body>
     <?php
           include 'menu_file.php';
+          include 'header.php';
           $skillsets = Array('skillset1','skillset2');
-
+          $roles = Array('role1','role2');
           $_GET['vv'];
 
     ?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/fSelect.css">
 
     <div id="dashboard">
-        <div>
+        <div id="directory-heading">
             User Directory
-            <button id="addClinician">ADD CLINICIAN</button>
+            <button id="addClinician" >ADD CLINICIAN</button>
         </div>
         <div id="filter-patients">
             <div class="filter-patients-div" id="filter-patients-heading">
                 FILTER PATIENTS
             </div>
+
             <div class="filter-patients-div" id="filter-patients-form-div">
                 <form id="filter-patients-form">
                     <div class="row">
@@ -33,30 +36,48 @@
                         </div>
                         <div class="col-4">
                             Skillset
-                            <select id="lstFruits" multiple="multiple">
+                            <br>
+                            <select id='skillset-select' multiple="multiple" >
+                                <?php
+                                    for($i = 0; $i < count($skillsets); $i++)
+                                        {
+                                            $j = $i+1;
+                                            echo "<option value='skillset-$j'>$skillsets[$i]</option>";
+                                        }
+                                ?>
                             </select>
-
                         </div>
                         <div class="col-4">
-                            First Name
-                            <input type="text">
+                            Date-Added
+                            <div id="date">
+                            <input type="date" id="start-date"> <input type="date" id="end-date">
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-4">
-                            First Name
-                            <input type="text">
-                        </div>
+                    <div class="row" id="form-div-2">
                         <div class="col-4">
                             Last Name
-                            <input type="text">
+                            <input type="text" placeholder="Last Name">
+                        </div>
+                        <div class="col-4">
+                            Role
+                            <select id="role-select" class="form-control">
+                                <option selected="selected" disabled>Select Role</option>;
+                                <?php
+                                for($i = 0; $i < count($roles); $i++)
+                                {
+                                    $j = $i+1;
+                                    echo "<option value='role-$j'>$roles[$i]</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="col-4">
                             Status
-                            <br>
-                            <input type="radio" name="status" value="active"> Active
-                            <input type="radio" name="status" value="inactive"> Inactive
-
+                            <div id="radio-id">
+                                <input type="radio" name="status" value="active">Active
+                                <input type="radio" name="status" value="inactive"> Inactive
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -101,7 +122,10 @@
           rel="stylesheet" type="text/css" />
     <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
             type="text/javascript"></script>
+    <script src="../js/fSelect.js"></script>
+
 
 </body>
+
 <script src="../js/dashboard.js"></script>
 </html>

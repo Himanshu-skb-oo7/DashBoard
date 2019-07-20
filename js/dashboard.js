@@ -14,6 +14,7 @@ var getParams = function (url) {
 
 
 $(document).ready(function () {
+
     var page_no = getParams(window.location.href).page_no;
     if(page_no == undefined)
         page_no = 1;
@@ -97,6 +98,14 @@ $("#close").click(function () {
 
 
 
+$('#skillset-select').fSelect({
+    placeholder: 'Select Skillset',
+});
+
+$('#clear').click(function () {
+    document.getElementById('filter-patients-form').reset();
+    $('#skillset-select').fSelect('reload');
+});
 
 
 
