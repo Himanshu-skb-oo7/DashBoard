@@ -183,12 +183,12 @@ radio
     color: white;
 }
 
-#start-date
+#start_date
 {
     margin-right:20px
 }
 
-#start-date, #end-date
+#start_date, #end_date
 {
     width:150px;
     display: inline-block;

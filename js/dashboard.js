@@ -19,7 +19,8 @@ $(document).ready(function () {
     if(page_no == undefined)
         page_no = 1;
 
-    getData(page_no);
+    getData(1);
+
 });
 
 function getTotalPages() {
@@ -27,58 +28,60 @@ function getTotalPages() {
     $.post("getFilteredData.php");
 }
 
-
 function getData(page_no) {
     $.ajax({
-        url: "getFilteredData.php",
-        method: "POST",
-        data: { page_no : page_no},
-        dataType: 'json',
-        success:
-            function(return_value)
-            {
-                $("#filter-patients-append").html('');
-                $("#pagination").html('');
-                $("#filter-patients-append").append(return_value.filtered_items);
+            url: "getFilteredData.php",
+            method: "POST",
+            data: {
+                page_num: page_no,
+            },
+            dataType: 'json',
+            success:
+                function(return_value)
+                {   console.log("DEFVe");
+                    console.log(return_value);
+                    $("#filter-patients-append").html('');
+                    $("#pagination").html('');
+                    $("#filter-patients-append").append(return_value.filtered_items);
 
-                var page_num = Math.ceil(return_value.total_records/10);
-                var i=1;
+                    var page_num = Math.ceil(return_value.total_records/10);
+                    var i=1;
 
-                var prev = $("<button id='page_nav_prev' class='pagination_button btn'></button>").text("<< Previous");
-                $("#pagination").append(prev);
+                    var prev = $("<button id='page_nav_prev' class='pagination_button btn'></button>").text("<< Previous");
+                    $("#pagination").append(prev);
 
-                while(i<=page_num)
-                {
-                    var app=$("<button id='page_nav_"+i+"' class='pagination_button btn'></button>").text(i);
-                    $("#pagination").append(app);
-                    i++;
-                }
-
-                var next = $("<button id='page_nav_next' class='pagination_button btn '></button>").text("Next >>");
-                $("#pagination").append(next);
-
-                $("#page_nav_"+page_no).addClass('active');
-
-
-                $('.pagination_button').click(function () {
-                    var page = this.getAttribute('id').split('_')[2];
-                    var active_page = parseInt($(".active").attr('id').split('_')[2]);
-                    active_page = parseInt(active_page);
-
-                    if(page=='prev' || page=='next') {
-                       if(page == 'prev' && active_page > '1')
-                            getData(--active_page);
-                        else if (page == 'next' && active_page < page_num){
-                            getData(++active_page);
-                        }
-                    } else {
-                        getData(page);
+                    while(i<=page_num)
+                    {
+                        var app=$("<button id='page_nav_"+i+"' class='pagination_button btn'></button>").text(i);
+                        $("#pagination").append(app);
+                        i++;
                     }
-                });
 
-            }
-            }
-        );
+                    var next = $("<button id='page_nav_next' class='pagination_button btn '></button>").text("Next >>");
+                    $("#pagination").append(next);
+
+                    $("#page_nav_"+page_no).addClass('active');
+
+
+                    $('.pagination_button').click(function () {
+                        var page = this.getAttribute('id').split('_')[2];
+                        var active_page = parseInt($(".active").attr('id').split('_')[2]);
+                        active_page = parseInt(active_page);
+
+                        if(page=='prev' || page=='next') {
+                            if(page == 'prev' && active_page > '1')
+                                getData(--active_page);
+                            else if (page == 'next' && active_page < page_num){
+                                getData(++active_page);
+                            }
+                        } else {
+                            getData(page);
+                        }
+                    });
+
+                }
+        }
+    );
 }
 
 function setParam(page_no) {
@@ -98,13 +101,34 @@ $("#close").click(function () {
 
 
 
-$('#skillset-select').fSelect({
+$('#skillset_select').fSelect({
     placeholder: 'Select Skillset',
 });
 
 $('#clear').click(function () {
     document.getElementById('filter-patients-form').reset();
-    $('#skillset-select').fSelect('reload');
+    $('#skillset_select').fSelect('reload');
+});
+
+$("#apply").click(function () {
+    $.ajax(
+        { url:'setFilterSession.php',
+            method: "POST",
+            data: {
+                first_name: $("#first_name").val(),
+                last_name: $("#last_name").val(),
+                skillset_select: $("#skillset_select").val(),
+                start_date: $("#start_date").val(),
+                end_date: $("#end_date").val(),
+                role_id: $("#role_id").val(),
+                status_bit: $("input[name='status']:checked").val(),
+            },
+            success: function () {
+            console.log("cool");
+                getData(1);
+                console.log("cool");
+            }
+        });
 });
 
 
