@@ -71,6 +71,11 @@ input
     font-weight: bold;
 }
 
+#skillset-select
+{
+    padding:5px;
+    border:1px solid #d9d9d9;
+}
 .overSelect {
     position: absolute;
     left: 0;

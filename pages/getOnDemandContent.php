@@ -1,7 +1,5 @@
 <?php
 
-//    $return_array = [ [10],[6],[9],[5],[1],[3],[11],[4],[8] ];
-
     $return_array = [
         ["Popular 2", 10],
         ["Popular 5", 6],
@@ -20,8 +18,6 @@
     $data["total_article_views"] = 267;
     $data["total_articles_shares"] = 59;
     $data["total_articles_by_topic"] = 76;
-
-
 
     echo json_encode($data);
 ?>

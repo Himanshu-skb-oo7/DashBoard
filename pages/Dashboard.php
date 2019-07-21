@@ -37,7 +37,7 @@
                         <div class="col-4">
                             Skillset
                             <br>
-                            <select id='skillset-select' multiple="multiple" >
+                            <select id='skillset-select' multiple="multiple">
                                 <?php
                                     for($i = 0; $i < count($skillsets); $i++)
                                         {
