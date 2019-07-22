@@ -388,6 +388,7 @@ $(document).ready(
             method: 'POST',
             dataType: 'json',
             success: function (return_array) {
+
                 var array = JSON.parse(return_array.array);
 
                 for(var i = 0; i < array.length; i++)
@@ -421,6 +422,7 @@ $(document).ready(
             method: 'POST',
             dataType: 'json',
             success: function (return_array) {
+                console.log(return_array)
                 var array = JSON.parse(return_array.array);
 
                 for(var i = 0; i < array.length; i++)
@@ -446,23 +448,19 @@ $(document).ready(
                 var btn2 = $("<div id='clinicians-num-2' class='dynamic_num_data'></div>").text(return_array.alert_volume);
                 var div2 = $("<div class='buttons-content'></div>").append(btn2);
                 div2.append("Alert Volume");
-                var btn3 = $("<div id='clinicians-num-3' class='dynamic_num_data'></div>").text(return_array.patients);
+
+                var btn3 = $("<div id='clinicians-num-3' class='dynamic_num_data'></div>").text(return_array.alert_by_type);
                 var div3 = $("<div class='buttons-content'></div>").append(btn3);
-                div3.append("Patients");
+                div3.append("Alert by Type");
 
-                var btn4 = $("<div id='clinicians-num-4' class='dynamic_num_data'></div>").text(return_array.alert_by_type);
-                var div4 = $("<div class='buttons-content'></div>").append(btn4);
-                div4.append("Alert by Type");
-
-                var btn5 = $("<div id='clinicians-num-5' class='dynamic_num_data'></div>").text(return_array.messsages_by_clinician);
-                var div5 = $("<div class='buttons-content'></div>").append(btn5);
-                div5.append("Messages by Clinician");
+                var btn4 = $("<div id='clinicians-num-4' class='dynamic_num_data'></div>").text(return_array.messages_by_clinician);
+                var div4 = $("<div class='buttons-content'></div>").append(btn4 );
+                div4.append("Messages by Clinician");
 
                 $("#clinicians-numbers-div").append(div1);
                 $("#clinicians-numbers-div").append(div2);
                 $("#clinicians-numbers-div").append(div3);
                 $("#clinicians-numbers-div").append(div4);
-                $("#clinicians-numbers-div").append(div5);
             }
         });
 

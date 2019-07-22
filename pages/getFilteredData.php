@@ -49,13 +49,10 @@ if(!(isset($_SESSION["first_name"]) and $_SESSION["first_name"] != '') and $quer
     $query_condition = " WHERE ".substr($query_condition,4);
 
 
-
 if($connection)
 {
     mysqli_query($connection, 'use dashboardDB');
     $result = mysqli_query($connection, "SELECT * FROM `Users` JOIN Roles ON Roles.role_id = Users.role_id ".$query_condition);
-
-
 
     if(mysqli_num_rows($result)>0){
 
@@ -122,7 +119,16 @@ for ($i = ($page_no-1)*10; $i < min($page_no*10,count($filtered_records)); $i++)
             }
             $data["filtered_items"] = $data["filtered_items"]."<div class='col-2'> " . $str . "</div>";
         } else {
-            $data["filtered_items"] = $data["filtered_items"]."<div class='col-2'> " . $filtered_records[$i][$j] . "</div>";
+
+            if($j == count($filtered_records[0])-1 ) {
+                if($filtered_records[$i][$j] == 1)
+                    $data["filtered_items"] = $data["filtered_items"]."<div class='col-2'> <button class='active-btn'>ACTIVE</button> </div>";
+                else
+                    $data["filtered_items"] = $data["filtered_items"]."<div class='col-2'> <button class='inactive-btn'>INACTIVE</button> </div>";
+
+            } else {
+                $data["filtered_items"] = $data["filtered_items"]."<div class='col-2'> " . $filtered_records[$i][$j] . "</div>";
+            }
 
         }
     }

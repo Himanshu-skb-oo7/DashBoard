@@ -252,3 +252,19 @@ input[type = "radio"]
     font-size: 20px;
     font-weight: 500;
 }
+
+.active-btn
+{
+    width: 100px;
+    color: white;
+    height: 100%;
+    border:none;
+    background-color: #5EB85C;
+}
+
+.inactive-btn
+{
+    width: 100px;
+    border:none;
+    color: white;
+}

@@ -13,7 +13,7 @@ $_SESSION["skillset_select"] = '';
 $_SESSION["start_date"] = '';
 $_SESSION["end_date"] = '';
 $_SESSION["role_id"] = '';
-$_SESSION["radio_id"] = '';
+$_SESSION["status_bit"] = '';
 
 include 'menu_file.php';
 include 'connect_to_db.php';

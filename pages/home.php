@@ -2,6 +2,7 @@
 <head>
     <title>
     </title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/home.css">
 </head>
@@ -14,13 +15,6 @@ include 'header.php';
 ?>
 
 <div id="home">
-    <!--    <div id="on-demand-content">-->
-    <!--        <div id="on-demand-content-heading>" class="sub-heading-home">ON-DEMAND CONTENT</div>-->
-    <!--        <div id="on-demand-content-numbers-div"></div>-->
-    <!--        <div id="on-demand-content-chart"></div>-->
-    <!--        <div id="on-demand-content-list"></div>-->
-    <!--    </div>-->
-
     <div class="row" id="on-demand-content">
         <div class="row">
             <div id="on-demand-content-heading"  class="sub-heading-home">ON-DEMAND CONTENT</div>
@@ -88,6 +82,5 @@ include 'header.php';
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src = "../js/home.js"></script>
-
 
 </html>

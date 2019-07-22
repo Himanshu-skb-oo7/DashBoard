@@ -1,23 +1,35 @@
 <?php
+include 'connect_to_db.php';
 
-    $return_array = [
-        ["Popular 2", 10],
-        ["Popular 5", 6],
-        ["Popular 3", 9],
-        ["Popular 6", 5],
-        ["Popular 9", 1],
-        ["Popular 8", 3],
-        ["Popular 1", 11],
-        ["Popular 7", 4],
-        ["Popular 4", 8],
-    ];
+if($connection) {
+
+    $return_array = [];
+    mysqli_query($connection, 'USE dashboardDB');
+    $result = mysqli_query($connection, "SELECT Users.first_name, Users.last_name, COUNT(Article_Views.user_id) FROM Users JOIN Article_Views ON Article_Views.user_id = Users.user_id GROUP by Article_Views.user_id ORDER BY COUNT(Article_Views.user_id) DESC LIMIT 10");
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $temp = [$row["first_name"]." ".$row["last_name"], (int)$row["COUNT(Article_Views.user_id)"]];
+            array_push($return_array, $temp);
+        }
+    }
 
 
-    $data["array"]= json_encode($return_array);
-    $data["total_articles"] = 76;
-    $data["total_article_views"] = 267;
-    $data["total_articles_shares"] = 59;
-    $data["total_articles_by_topic"] = 76;
+
+    $data["array"] = json_encode($return_array);
+
+    $result = mysqli_query($connection, "SELECT COUNT(*) FROM Articles");
+    $data["total_articles"] = mysqli_fetch_assoc($result)["COUNT(*)"];
+
+    $result = mysqli_query($connection, "SELECT COUNT(*) FROM Article_Views");
+    $data["total_article_views"] = mysqli_fetch_assoc($result)["COUNT(*)"];
+
+    $result = mysqli_query($connection, "SELECT COUNT(*) FROM Article_Shares");
+    $data["total_articles_shares"] = mysqli_fetch_assoc($result)["COUNT(*)"];
+
+    $result = mysqli_query($connection, "SELECT Users.first_name, Users.last_name, COUNT(Article_Views.user_id) FROM Users JOIN Article_Views ON Article_Views.user_id = Users.user_id GROUP by Article_Views.user_id ORDER BY COUNT(Article_Views.user_id) DESC LIMIT 10");
+    $data["total_articles_by_topic"] = mysqli_fetch_assoc($result)["COUNT(*)"];
 
     echo json_encode($data);
+}
 ?>
