@@ -5,19 +5,19 @@ if($_SESSION['active_user']!='') {
 }
 ?>
 <html>
-    <head>
-        <title>Login | Company</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/index.css">
-    </head>
-    <body>
-    <div id="wrapper" class="container">
+<head>
+    <title>Login | Company</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="wrapper" class="container">
     <form id="login_form">
         <legend id="loginLegend">Log In Form</legend>
         <div class="row">
             <div class="col-9">
                 <div class="row">
-                     <div class="col-4">
+                    <div class="col-4">
                         Email
                     </div>
                     <div class="col-8">
@@ -26,7 +26,7 @@ if($_SESSION['active_user']!='') {
                 </div>
 
                 <div class="row">
-                     <div class="col-4">
+                    <div class="col-4">
                         Password
                     </div>
                     <div class="col-8">
@@ -43,56 +43,16 @@ if($_SESSION['active_user']!='') {
 
     </form>
 
+    <form action="pages/signUpForm.php">
+        <button class="btn col-12" id="signUpButton">SignUp</button>
+    </form>
+</div>
 
-        <form id="signUpForm">
-            <legend id="signUpLegend">Sign Up Form</legend>
-        <div class="row">
-            <div class="col-3">
-                First Name
-            </div>
-            <div class="col-9" id="first_name_div">
-                <input type="text" name="first_name"  class="form-control" id="first_name">
-            </div>
-        </div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-        <div class="row">
-            <div class="col-3">
-                Last Name
-            </div>
-            <div class="col-9" id="last_name_div">
-                <input type="text" name="last_name" class="form-control"  id="last_name">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-3" class="div">
-                Email
-            </div>
-            <div class="col-9" id="email_div">
-                <input type="email" name="email" class="form-control" id="email">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-3">
-                Password
-            </div>
-            <div class="col-9" id="password_div">
-                <input type="password" name="password" class="form-control" id="password">
-            </div>
-        </div>
-
-            <button class="btn col-12" id="signUpButton">SignUp</button>
-            <div id="signUpError"></div>
-
-        </form>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="js/index.js"></script>
-    </body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="js/index.js"></script>
+</body>
 
 
 </html>

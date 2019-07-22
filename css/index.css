@@ -1,6 +1,6 @@
 body
 {
-    background-color: #85dcb0;
+    background-color: lightgrey;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@ body
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 0;
-    background-color: #F8BE54;
+    background-color: white;
     border: 2px solid grey;
     box-shadow: 0 0 25px grey;
 }
@@ -62,14 +62,8 @@ body
     color: white;
 }
 
-input[type="text"], input[type="email"], input[type="password"]
-{
-    width: 100%;
-    border: none;
-    box-shadow: 0 0 6px grey;
-}
 
-#loginError, #signUpError
+#loginError
 {
     margin:0;
     width: 100%;
@@ -79,19 +73,12 @@ input[type="text"], input[type="email"], input[type="password"]
     color: RED;
 }
 
-
-#signUpLegend
-{
-    margin-top: 5px;
-    margin-bottom: 0px;
-    text-align: center;
-}
-
 #loginLegend
 {
     margin-top: 7px;
     margin-bottom: -14px;
     text-align: center;
-    color: white;
+    color: grey;
+    padding-bottom: 10px;
 }
 

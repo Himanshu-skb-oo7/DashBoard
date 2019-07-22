@@ -1,11 +1,13 @@
 #header
 {
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     background-color: white;
     border-bottom: 1px solid #F0EDE8;
     height: 40px;
+    z-index: 999;
+    padding-top: 4px;
 }
 
 #header-select
@@ -17,7 +19,7 @@
     color: dodgerblue;
     font-weight: 700;
     margin-left: 50px;
-    padding: 5px;
+    margin-top: 3px;
     outline: none;
 }
 

@@ -12,11 +12,14 @@ if($connection) {
 
 
     if(mysqli_num_rows($result)>0) {
+        $i = 1;
         while($row = mysqli_fetch_assoc($result))
         {
             $temp = [$row["skill_name"], (int)$row["COUNT(Skills.skill_id)"] ] ;
             array_push($return_array, $temp);
+            $i++;
         }
+
     }
 
 

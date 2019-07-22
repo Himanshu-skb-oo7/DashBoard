@@ -124,9 +124,7 @@ $("#apply").click(function () {
                 status_bit: $("input[name='status']:checked").val(),
             },
             success: function () {
-            console.log("cool");
                 getData(1);
-                console.log("cool");
             }
         });
 });

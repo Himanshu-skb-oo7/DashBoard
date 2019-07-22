@@ -10,7 +10,7 @@ include 'connect_to_db.php';
 
 
 $filtered_records= array();
-
+$data["filtered_items"]="";
 $query_condition = "";
 $query_condition_skill = "";
 
@@ -103,8 +103,6 @@ if($connection)
     }
 }
 
-$data["filtered_items"]="";
-$total_records=0;
 for ($i = ($page_no-1)*10; $i < min($page_no*10,count($filtered_records)); $i++) {
     $data["filtered_items"] .= " <div class='row'>";
     for ($j = 0; $j < count($filtered_records[0]); $j++) {

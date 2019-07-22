@@ -125,3 +125,9 @@ svg
 {
     margin-top:-10px;
 }
+
+
+div, body, button, input, ol, li
+{
+    font-family: ‘Helvetica’, Verdana, 'sans-serif';
+}

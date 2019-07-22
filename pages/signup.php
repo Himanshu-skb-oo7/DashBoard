@@ -4,18 +4,22 @@ $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
+$role_id =  $_POST['role_id'];
+$added_by = $_POST['added_by'];
 
 if($connection){
     if($first_name!='' && $last_name!='' && $email!='' && $password!='') {
         mysqli_query($connection, 'use dashboardDB');
-        $result = mysqli_query($connection, "SELECT * from login_details where email='$email';");
+        $result = mysqli_query($connection, "SELECT * from Users where email='$email';");
 
         if (mysqli_num_rows($result) > 0) {
             echo 'User already registered.';
         } else {
-            $sql = "INSERT INTO login_details (first_name, last_name, email, password) VALUES ('$first_name', '$last_name', '$email', '$password')";
+            $sql = "INSERT INTO Users (first_name, last_name, email, password ,role_id, 
+                    date_added, status_bit, added_by) VALUES ('$first_name', '$last_name', 
+                    '$email', '$password', $role_id, '".date('Y/m/d')."' ,1,$added_by)";
             mysqli_query($connection, $sql);
-            echo 'Signed Up Successfully';
+            echo "Signed Up Successfully !";
         }
     } else {
         echo 'Enter Valid Credentials';

@@ -1,6 +1,7 @@
 body
 {
     position: relative;
+
 }
 
 #dashboard
@@ -267,4 +268,9 @@ input[type = "radio"]
     width: 100px;
     border:none;
     color: white;
+}
+
+div, body, button, input
+{
+    font-family: ‘Helvetica’, Verdana, 'sans-serif';
 }

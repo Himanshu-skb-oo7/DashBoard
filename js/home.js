@@ -261,6 +261,7 @@ $(document).ready(
             method: 'POST',
             dataType: 'json',
             success: function (return_array) {
+                console.log(return_array);
                 var array = JSON.parse(return_array.array);
 
                 for(var i = 0; i < array.length; i++)

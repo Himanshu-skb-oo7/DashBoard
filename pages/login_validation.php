@@ -13,8 +13,11 @@ if($connection) {
         $email = $_POST['email'];
         $password = $_POST['password'];
         mysqli_query($connection, 'use dashboardDB');
-        $result = mysqli_query($connection, "SELECT * from login_details where email = '$email'");
+        $result = mysqli_query($connection, "SELECT * from Users where email = '$email'");
+
         if(mysqli_num_rows($result)>0){
+
+
             $row = mysqli_fetch_assoc($result);
             if($password == $row['password']) {
                 $_SESSION['active_user'] = $email;
