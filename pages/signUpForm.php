@@ -5,10 +5,8 @@ include 'login_check.php';
 <html>
 <head>
     <title></title>
-
     <link rel="stylesheet" href="../css/signUpForm.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
 </head>
 
 <body>
