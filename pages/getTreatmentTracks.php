@@ -10,17 +10,30 @@ if($connection) {
 
 
 
+    $count = 0;
+    $max= -1 ;
+    $most_popular = "None";
+    $i = 1;
     if(mysqli_num_rows($result)>0) {
         while($row = mysqli_fetch_assoc($result))
         {
-            $temp = [$row["treatment_track_name"], (int)$row["COUNT(Treatment_record.treatment_track_id)"] ] ;
+            $temp = ["".(int)$row["COUNT(Treatment_record.treatment_track_id)"], (int)$row["COUNT(Treatment_record.treatment_track_id)"] ] ;
+            $count += (int)$row["COUNT(Treatment_record.treatment_track_id)"];
             array_push($return_array, $temp);
+            $i++;
+
+            if((int)$row["COUNT(Treatment_record.treatment_track_id)"]>max) {
+                $max = (int)$row["COUNT(Treatment_record.treatment_track_id)"];
+                $most_popular = $row["treatment_track_name"];
+            }
         }
     }
 
 
     $data["array"]= json_encode($return_array);
-    $data["product"] = 1;
+    $data["total"] = $count;
+    $data["average"] = (int)( $data["total"]/($i-1) );
+    $data["most_popular"] = $most_popular;
     echo json_encode($data);
 }
 

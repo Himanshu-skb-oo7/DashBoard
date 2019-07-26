@@ -13,7 +13,8 @@ $_SESSION["skillset_select"] = '';
 $_SESSION["start_date"] = '';
 $_SESSION["end_date"] = '';
 $_SESSION["role_id"] = '';
-$_SESSION["status_bit"] = '';
+$_SESSION["active_status"] = '';
+$_SESSION["inactive_status"] = '';
 
 include 'menu_file.php';
 include 'connect_to_db.php';
@@ -51,7 +52,7 @@ if($connection) {
 <link rel="stylesheet" href="../css/dashboard.css">
 <link rel="stylesheet" href="../css/fSelect.css">
 
-<div id="dashboard">
+<div class="dashboard">
     <div id="directory-heading">
         User Directory
         <button id="addClinician" >ADD CLINICIAN</button>
@@ -68,7 +69,7 @@ if($connection) {
                         First Name
                         <input id = "first_name" type="text" placeholder="First Name">
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         Skillset
                         <br>
                         <select id='skillset_select' multiple="multiple">
@@ -81,10 +82,10 @@ if($connection) {
                             ?>
                         </select>
                     </div>
-                    <div class="col-4">
+                    <div class="col-5">
                         Date-Added
                         <div id="date">
-                            <input type="date" id="start_date"> <input type="date" id="end_date">
+                            <input type="date" id="start_date"> - <input type="date" id="end_date">
                         </div>
                     </div>
                 </div>
@@ -93,7 +94,7 @@ if($connection) {
                         Last Name
                         <input id="last_name" type="text" placeholder="Last Name">
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         Role
                         <select id="role_id" class="form-control">
                             <option selected="selected" disabled>Select Role</option>;
@@ -106,11 +107,11 @@ if($connection) {
                             ?>
                         </select>
                     </div>
-                    <div class="col-4">
+                    <div class="col-5">
                         Status
-                        <div id="radio_id">
-                            <input type="radio" name="status" value="1">Active
-                            <input type="radio" name="status" value="0"> Inactive
+                        <div id="status_bit">
+                            <input type="checkbox" id="active_status">Active
+                            <input type="checkbox" id="inactive_status"> Inactive
                         </div>
                     </div>
                 </div>
@@ -128,8 +129,8 @@ if($connection) {
                 <div class="col-2">User's Name</div>
                 <div class="col-2">Skillset</div>
                 <div class="col-2">Role</div>
-                <div class="col-2">Added By</div>
                 <div class="col-2">Date Added</div>
+                <div class="col-2">Added By</div>
                 <div class="col-2">Status</div>
             </div>
         </div>

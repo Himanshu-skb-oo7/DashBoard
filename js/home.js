@@ -43,7 +43,6 @@ function drawChartOnDemand(arr) {
 
     var chart = new google.visualization.ColumnChart(document.getElementById("on-demand-content-chart"));
     chart.draw(view, options);
-    // console.log(chart )
 }
 
 function drawChartTreatmentTracks(arr) {
@@ -87,7 +86,6 @@ function drawChartTreatmentTracks(arr) {
 
     var chart = new google.visualization.ColumnChart(document.getElementById("treatment-tracks-chart"));
     chart.draw(view, options);
-    // console.log(chart )
 }
 
 function drawChartSkillsets(arr) {
@@ -131,7 +129,6 @@ function drawChartSkillsets(arr) {
 
     var chart = new google.visualization.ColumnChart(document.getElementById("skillsets-chart"));
     chart.draw(view, options);
-    // console.log(chart )
 }
 
 function drawChartOnClinicianCorner(arr) {
@@ -173,7 +170,6 @@ function drawChartOnClinicianCorner(arr) {
 
     var chart = new google.visualization.ColumnChart(document.getElementById("clinician-corner-posts-chart"));
     chart.draw(view, options);
-    // console.log(chart )
 }
 
 function drawChartClinician(arr) {
@@ -215,7 +211,6 @@ function drawChartClinician(arr) {
 
     var chart = new google.visualization.LineChart(document.getElementById("clinicians-chart"));
     chart.draw(view, options);
-    // console.log(chart )
 }
 
 
@@ -251,17 +246,18 @@ function drawChart(array) {
 
     var chart = new google.visualization.ColumnChart(document.getElementById(divId));
     chart.draw(view, options);
-    // console.log(chart )
 }
 
 $(document).ready(
+
+
     function () {
         $.ajax({
             url: "getOnDemandContent.php",
             method: 'POST',
             dataType: 'json',
             success: function (return_array) {
-                console.log(return_array);
+
                 var array = JSON.parse(return_array.array);
 
                 for(var i = 0; i < array.length; i++)
@@ -269,14 +265,21 @@ $(document).ready(
                     array[i].push("#5EB85C");
                 }
 
-                var ol = $('<ol></ol>');
+
                 for(var i=0; i < array.length; i++)
                 {
-                    var temp = $("<li></li>").text(array[i][0]);
-                    ol.append(temp);
+
+                    var divid = $('<div class="col-1"></div>').text((i+1)+".");
+                    var divtitle = $('<div class="col-8"></div>').text(return_array.titles[i]);
+                    var divcount = $('<div class="col-1"></div>').text(return_array.count[i]);
+
+                    var temp = $('<div class="row list_parent_div"></div>');
+                    temp.append(divid);
+                    temp.append(divtitle);
+                    temp.append(divcount);
+                    $('#on-demand-content-list').append(temp);
                 }
 
-                $('#on-demand-content-list').append(ol);
 
                 drawChartOnDemand(array);
 
@@ -311,21 +314,28 @@ $(document).ready(
             method: 'POST',
             dataType: 'json',
             success: function (return_array) {
-                var array = JSON.parse(return_array.array   );
+                var array = JSON.parse(return_array.array);
 
                 for(var i = 0; i < array.length; i++)
                 {
                     array[i].push("#5EB85C");
                 }
 
-                var ol = $('<ol></ol>');
+
                 for(var i=0; i < array.length; i++)
                 {
-                    var temp = $("<li></li>").text(array[i][0]);
-                    ol.append(temp);
+
+                    var divid = $('<div class="col-2"></div>').text((i+1)+".");
+                    var divtitle = $('<div class="col-8"></div>').text(return_array.titles[i]);
+                    var divcount = $('<div class="col-1"></div>').text(return_array.count[i]);
+
+                    var temp = $('<div class="row list_parent_div"></div>');
+                    temp.append(divid);
+                    temp.append(divtitle);
+                    temp.append(divcount);
+                    $('#clinician-corner-posts-list').append(temp);
                 }
 
-                $('#clinician-corner-posts-list').append(ol);
 
                 drawChartOnClinicianCorner(array);
 
@@ -357,21 +367,28 @@ $(document).ready(
             method: 'POST',
             dataType: 'json',
             success: function (return_array) {
-                var array = JSON.parse(return_array.array   );
+                var array = JSON.parse(return_array.array);
 
                 for(var i = 0; i < array.length; i++)
                 {
                     array[i].push("#5EB85C");
                 }
 
-                var ol = $('<ol></ol>');
                 for(var i=0; i < array.length; i++)
                 {
-                    var temp = $("<li></li>").text(array[i][0]);
-                    ol.append(temp);
+
+                    var divid = $('<div class="col-1"></div>').text((i+1)+".");
+                    var divtitle = $('<div class="col-8"></div>').text(return_array.titles[i]);
+                    var divcount = $('<div class="col-1"></div>').text(return_array.count[i]);
+
+                    var temp = $('<div class="row list_parent_div"></div>');
+                    temp.append(divid);
+                    temp.append(divtitle);
+                    temp.append(divcount);
+                    $('#skillsets-list').append(temp);
                 }
 
-                $('#skillsets-list').append(ol);
+
 
                 drawChartSkillsets(array);
 
@@ -397,14 +414,27 @@ $(document).ready(
                     array[i].push("#5EB85C");
                 }
 
-                var ol = $('<ol></ol>');
-                for(var i=0; i < array.length; i++)
-                {
-                    var temp = $("<li></li>").text(array[i][0]);
-                    ol.append(temp);
-                }
 
-                $('#treatment-tracks-list').append(ol);
+                var row1 = $('<div class="row list_parent_div"></div>');
+                var divid = $('<div class="col-5"></div>').text("Total");
+                var divtitle = $('<div class="col-7"></div>').text(return_array.total);
+                row1.append(divid);
+                row1.append(divtitle);
+                $('#treatment-tracks-list').append(row1);
+
+                var row2 = $('<div class="row list_parent_div"></div>');
+                var divid = $('<div class="col-5"></div>').text("Average");
+                var divtitle = $('<div class="col-7"></div>').text(return_array.average);
+                row1.append(divid);
+                row1.append(divtitle);
+                $('#treatment-tracks-list').append(row2);
+
+                var row3 = $('<div class="row list_parent_div"></div>');
+                var divid = $('<div class="col-5"></div>').text("Most Popular");
+                var divtitle = $('<div class="col-7"></div>').text(return_array.most_popular);
+                row1.append(divid);
+                row1.append(divtitle);
+                $('#treatment-tracks-list').append(row3);
 
                 drawChartTreatmentTracks(array);
 
@@ -423,7 +453,7 @@ $(document).ready(
             method: 'POST',
             dataType: 'json',
             success: function (return_array) {
-                console.log(return_array)
+
                 var array = JSON.parse(return_array.array);
 
                 for(var i = 0; i < array.length; i++)
@@ -431,14 +461,33 @@ $(document).ready(
                     array[i].push("#5EB85C");
                 }
 
-                var ol = $('<ol></ol>');
-                for(var i=0; i < array.length; i++)
-                {
-                    var temp = $("<li></li>").text(array[i][0]);
-                    ol.append(temp);
-                }
+                var row1 = $('<div class="row list_parent_div"></div>');
+                var divid = $('<div class="col-5"></div>').text("Total");
+                var divtitle = $('<div class="col-7"></div>').text(return_array.total+" Messages");
+                row1.append(divid);
+                row1.append(divtitle);
+                $('#clinicians-list').append(row1);
 
-                $('#clinicians-list').append(ol);
+                var row2 = $('<div class="row list_parent_div"></div>');
+                var divid = $('<div class="col-5"></div>').text("Average");
+                var divtitle = $('<div class="col-7"></div>').text(parseInt(return_array.average)+" Messages");
+                row1.append(divid);
+                row1.append(divtitle);
+                $('#clinicians-list').append(row2);
+
+                var row3 = $('<div class="row list_parent_div"></div>');
+                var divid = $('<div class="col-5"></div>').text("Highest Day");
+                var divtitle = $('<div class="col-7"></div>').text(return_array.Highest+" Messages");
+                row1.append(divid);
+                row1.append(divtitle);
+                $('#clinicians-list').append(row3);
+
+                var row4 = $('<div class="row list_parent_div"></div>');
+                var divid = $('<div class="col-5"></div>').text("Lowest Day");
+                var divtitle = $('<div class="col-7"></div>').text(return_array.Lowest+" Messages");
+                row4.append(divid);
+                row4.append(divtitle);
+                $('#clinicians-list').append(row4);
 
                 drawChartClinician(array);
 
@@ -468,3 +517,4 @@ $(document).ready(
 
     }
 );
+

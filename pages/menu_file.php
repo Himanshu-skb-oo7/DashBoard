@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../css/menu.css">
 <?php
 include 'login_check.php';
 include 'connect_to_db.php';
@@ -21,32 +22,50 @@ if($connection) {
     if(mysqli_num_rows($result)>0) {
         while($row = mysqli_fetch_assoc($result))
         {
-            array_push($menu_items,$row['menu_items']);
+            $temp = array();
+            array_push($temp,$row['menu_items']);
+            array_push($temp,$row['menu_link']);
+            array_push($menu_items,$temp);
         }
     }
-
-    $result = mysqli_query($connection,"SELECT `first_name` and `last_name` FROM login_details WHERE `email` = ".$_SESSION['active_user'] );
-    if(mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result))
-        {
-            array_push($row["first_name"]);
-        }
-    }
-
-
 } else {
     echo 'Connection Error';
 }
 ?>
 
-<link rel="stylesheet" href="../css/menu.css">
 
-<div id="menubar">
+
+<div class="menubar">
     <?php
+
+    $user_pic = mysqli_query($connection, "select Users.user_picture from Users where Users.email = '".$_SESSION['active_user']."'");
+
+    while($row = mysqli_fetch_assoc($user_pic))
+    {
+        if($row['user_picture'] != null )
+            echo "<img id='user_pic' src='data:image/png;base64,".base64_encode($row['user_picture'])."'/>";
+        else
+            echo "<img id='user_pic' src='../user_images/default_user_pic.png'/>";
+
+    }
+
+
+
     for($i = 0; $i < count($menu_items); $i++)
     {
-        echo "<div class='menu-items' id='menu_id_$menu_items[$i]'>$menu_items[$i]</div>";
+        if($i == 0) {
+            echo "<a class='username menu-items'>".$menu_items[$i]."</a>";
+        } else {
+            if($menu_items[$i][1]!='' or $menu_items[$i][1] != null) {
+                echo "<a class='menu-items' id='menu_id_".$menu_items[$i][0]."' href='".$menu_items[$i][1]."'>".$menu_items[$i][0]."</a>";
+            } else {
+                echo "<a class='menu-items' id='menu_id_$menu_items[$i]'>".$menu_items[$i][0]."</a>";
+            }
+        }
+
+
     }
+
     ?>
 </div>
 

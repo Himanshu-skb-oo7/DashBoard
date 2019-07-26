@@ -1,11 +1,20 @@
-#signUpError
+#signUpStatus
 {
     margin:0;
     width: 100%;
     line-height:5px;
     height: 20px;
     text-align: center;
-    color: RED;
+}
+
+.error
+{
+    color:red;
+}
+
+.success
+{
+    color:green;
 }
 
 #signUpLegend

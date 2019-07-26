@@ -37,29 +37,29 @@ function getData(page_no) {
             },
             dataType: 'json',
             success:
-                function(return_value)
-                {   console.log("DEFVe");
-                    console.log(return_value);
+                function(return_value) {
                     $("#filter-patients-append").html('');
                     $("#pagination").html('');
                     $("#filter-patients-append").append(return_value.filtered_items);
 
-                    var page_num = Math.ceil(return_value.total_records/10);
-                    var i=1;
+                    var page_num = Math.ceil(return_value.total_records / 10);
 
-                    var prev = $("<button id='page_nav_prev' class='pagination_button btn'></button>").text("<< Previous");
-                    $("#pagination").append(prev);
+                    if(page_num >=1 ) {
+                        var i = 1;
 
-                    while(i<=page_num)
-                    {
-                        var app=$("<button id='page_nav_"+i+"' class='pagination_button btn'></button>").text(i);
-                        $("#pagination").append(app);
-                        i++;
+                        var prev = $("<button id='page_nav_prev' class='pagination_button btn'></button>").text("<< Previous");
+                        $("#pagination").append(prev);
+
+                        while (i <= page_num) {
+                            var app = $("<button id='page_nav_" + i + "' class='pagination_button btn'></button>").text(i);
+                            $("#pagination").append(app);
+                            i++;
+                        }
+
+                        var next = $("<button id='page_nav_next' class='pagination_button btn '></button>").text("Next >>");
+                        $("#pagination").append(next);
+
                     }
-
-                    var next = $("<button id='page_nav_next' class='pagination_button btn '></button>").text("Next >>");
-                    $("#pagination").append(next);
-
                     $("#page_nav_"+page_no).addClass('active');
 
 
@@ -121,7 +121,8 @@ $("#apply").click(function () {
                 start_date: $("#start_date").val(),
                 end_date: $("#end_date").val(),
                 role_id: $("#role_id").val(),
-                status_bit: $("input[name='status']:checked").val(),
+                active_status: $($("#active_status")).is(":checked"),
+                inactive_status: $($("#inactive_status")).is(":checked"),
             },
             success: function () {
                 getData(1);
@@ -129,5 +130,5 @@ $("#apply").click(function () {
         });
 });
 
-
+$("#menu_id_Dashboard").addClass("current-menu");
 

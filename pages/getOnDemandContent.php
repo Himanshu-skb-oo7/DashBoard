@@ -7,10 +7,16 @@ if($connection) {
     mysqli_query($connection, 'USE dashboardDB');
     $result = mysqli_query($connection, "SELECT Users.first_name, Users.last_name, COUNT(Article_Views.user_id) FROM Users JOIN Article_Views ON Article_Views.user_id = Users.user_id GROUP by `email` ORDER BY COUNT(Article_Views.user_id) DESC LIMIT 10");
 
+    $titles = array();
+    $count = array();
     if (mysqli_num_rows($result) > 0) {
+        $i = 1;
         while ($row = mysqli_fetch_assoc($result)) {
-            $temp = [$row["first_name"]." ".$row["last_name"], (int)$row["COUNT(Article_Views.user_id)"]];
+            $temp = [" ".$i, (int)$row["COUNT(Article_Views.user_id)"]];
             array_push($return_array, $temp);
+            array_push($titles,$row["first_name"]." ".$row["last_name"]);
+            array_push($count, (int)$row["COUNT(Article_Views.user_id)"]);
+            $i++;
         }
     }
 
@@ -29,6 +35,9 @@ if($connection) {
 
     $result = mysqli_query($connection, "SELECT COUNT(*) FROM Articles where Articles.topic_id IS NOT NULL");
     $data["total_articles_by_topic"] = mysqli_fetch_assoc($result)["COUNT(*)"];
+
+    $data["titles"] = $titles;
+    $data["count"] = $count;
 
     echo json_encode($data);
 }

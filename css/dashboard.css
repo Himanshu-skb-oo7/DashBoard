@@ -4,7 +4,7 @@ body
 
 }
 
-#dashboard
+.dashboard
 {
     position: absolute;
     width:78%;
@@ -186,12 +186,12 @@ radio
 
 #start_date
 {
-    margin-right:20px
+    margin-right:0px
 }
 
 #start_date, #end_date
 {
-    width:150px;
+    width:160px;
     display: inline-block;
 
 }
@@ -204,21 +204,21 @@ input
 
 }
 
-input[type = "radio"]
+input[type = "checkbox"]
 {
     display: inline-block;
     width: 40px;
     border-radius: 0;
 }
 
-#radio-id
+#status_bit
 {
     margin:0;
     padding-left: 0;
     text-align: left;
 }
 
-.col-4
+.col-4,.col-3,.col-5
 {
     font-weight: 700;
 }
@@ -261,6 +261,7 @@ input[type = "radio"]
     height: 100%;
     border:none;
     background-color: #5EB85C;
+
 }
 
 .inactive-btn
@@ -270,7 +271,20 @@ input[type = "radio"]
     color: white;
 }
 
+.no-data
+{
+    text-align: center;
+    height: 50px;
+    padding: 15px;
+    font-size: 20px;
+}
+
 div, body, button, input
 {
     font-family: ‘Helvetica’, Verdana, 'sans-serif';
+}
+
+button.active-btn, button.inactive-btn
+{
+    cursor:text;
 }

@@ -59,20 +59,6 @@ body{
 }
 
 
-#on-demand-content-chart
-{
-    margin:0;
-    display: inline-block;
-
-}
-
-#on-demand-content-list
-{
-    height: 100%;
-    padding: 20px;
-    display: inline-block;
-}
-
 .row
 {
     margin-left:15px;
@@ -99,6 +85,7 @@ svg
     background-color: #F0EDE8;
     width:100%;
 }
+
 
 #treatment-tracks
 {
@@ -130,4 +117,20 @@ svg
 div, body, button, input, ol, li
 {
     font-family: ‘Helvetica’, Verdana, 'sans-serif';
+}
+
+p{
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.list_parent_div
+{
+    font-size:12px;
+    text-align: left;
+}
+
+#menubar.menu-items
+{
+    text-decoration: none;
 }

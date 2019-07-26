@@ -1,6 +1,3 @@
-<?php
-include 'login_check.php';
-?>
 
 <html>
 <head>
@@ -84,11 +81,8 @@ include 'login_check.php';
                 </select>
             </div>
         </div>
-
-
         <button class="btn col-12" id="signUpButton">SignUp</button>
-        <div id="signUpError"></div>
-
+        <div id="signUpStatus"></div>
 
     </form>
 </div>

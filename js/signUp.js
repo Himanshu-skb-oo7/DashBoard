@@ -8,20 +8,31 @@ $('#signUpForm').on('submit', function (e) {
     var role_id = ($('#role_id').val()).trim();
     var added_by = 1;
 
-
-
     if(first_name == '') {
-        alert("Please enter the first name");
+        $($('#signUpStatus')).removeClass('success');
+        $($('#signUpStatus')).addClass('error');
+        $('#signUpStatus').html("Please enter the first name");
     } else if(last_name == '') {
-        alert("Please enter the last name");
+        $($('#signUpStatus')).removeClass('success');
+        $($('#signUpStatus')).addClass('error');
+        $($('#signUpStatus')).removeClass('success');
+        $('#signUpStatus').html("Please enter the last name");
     } else if (email == '') {
-        alert("Please enter the email address ");
+        $($('#signUpStatus')).removeClass('success');
+        $($('#signUpStatus')).addClass('error');
+        $('#signUpStatus').html("Please enter the email address ");
     } else if (password == '') {
-        alert("Please enter the password");
+        $($('#signUpStatus')).removeClass('success');
+        $($('#signUpStatus')).addClass('error');
+        $('#signUpStatus').html("Please enter the password");
     } else if(confirm_password == '') {
-        alert("Please enter the password again ");
+        $($('#signUpStatus')).removeClass('success');
+        $($('#signUpStatus')).addClass('error');
+        $('#signUpStatus').html("Please enter the password again ");
     } else  if (password != confirm_password) {
-        alert("both password are not same !")
+        $($('#signUpStatus')).removeClass('success');
+        $($('#signUpStatus')).addClass('error');
+        $('#signUpStatus').html("both password are not same !")
     } else{
         $.post(
             "signup.php",
@@ -35,11 +46,19 @@ $('#signUpForm').on('submit', function (e) {
             },
             function(return_value)
             {
-                console.log("");
-                if(return_value== 'Successful'){
-                    window.location.href = "htttp://localhost/dashboard/index.php";
+                if(return_value== 'Signed Up Successfully !'){
+                    $($('#signUpStatus')).removeClass('error');
+                    $($('#signUpStatus')).addClass('success');
+                    $('#signUpStatus').html(return_value);
+                    setTimeout(function () {
+                        window.location.href = "http://localhost/dashboard/";
+                    },3000);
+
+
                 } else {
-                    $('#signUpError').html(return_value);
+                    $($('#signUpStatus')).removeClass('success');
+                    $($('#signUpStatus')).addClass('error');
+                    $('#signUpStatus').html(return_value);
                 }
             });
     }

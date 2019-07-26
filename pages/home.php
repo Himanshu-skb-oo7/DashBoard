@@ -21,8 +21,8 @@ include 'header.php';
         </div>
         <div class="row">
             <div class="col-2" id="on-demand-content-numbers-div"></div>
-            <div class="col-7" id="on-demand-content-chart" ></div>
-            <div class="col-3" id="on-demand-content-list"></div>
+            <div class="col-6" id="on-demand-content-chart" ></div>
+            <div class="col-4" id="on-demand-content-list"></div>
         </div>
     </div>
 
@@ -32,8 +32,8 @@ include 'header.php';
         </div>
         <div class="row">
             <div class="col-2" id="clinician-corner-posts-numbers-div"></div>
-            <div class="col-7" id="clinician-corner-posts-chart" ></div>
-            <div class="col-3" id="clinician-corner-posts-list"></div>
+            <div class="col-6" id="clinician-corner-posts-chart" ></div>
+            <div class="col-4" id="clinician-corner-posts-list"></div>
         </div>
     </div>
 
@@ -44,8 +44,8 @@ include 'header.php';
         </div>
         <div class="row">
             <div class="col-2" id="clinicians-numbers-div"></div>
-            <div class="col-7" id="clinicians-chart" ></div>
-            <div class="col-3" id="clinicians-list"></div>
+            <div class="col-6" id="clinicians-chart" ></div>
+            <div class="col-4" id="clinicians-list"></div>
         </div>
     </div>
 
@@ -56,8 +56,8 @@ include 'header.php';
         </div>
         <div class="row">
             <div class="col-2" id="skillsets-numbers-div"></div>
-            <div class="col-7" id="skillsets-chart" ></div>
-            <div class="col-3" id="skillsets-list"></div>
+            <div class="col-6" id="skillsets-chart" ></div>
+            <div class="col-4" id="skillsets-list"></div>
         </div>
     </div>
 
@@ -67,8 +67,8 @@ include 'header.php';
         </div>
         <div class="row">
             <div class="col-2" id="treatment-tracks-numbers-div"></div>
-            <div class="col-7" id="treatment-tracks-chart" ></div>
-            <div class="col-3" id="treatment-tracks-list"></div>
+            <div class="col-6" id="treatment-tracks-chart" ></div>
+            <div class="col-4" id="treatment-tracks-list"></div>
         </div>
     </div>
 </div>

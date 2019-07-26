@@ -17,7 +17,6 @@ $('#login_form').on('submit', function (e) {
             },
             function(return_value)
             {
-                //console.log(return_value);
                 if(return_value.length>4 || return_value.length==2)
                 {
                     window.location.href="http://localhost/dashboard/index.php";

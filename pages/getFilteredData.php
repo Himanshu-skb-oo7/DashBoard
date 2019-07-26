@@ -42,17 +42,32 @@ if(isset($_SESSION["role_id"]) and $_SESSION["role_id"] != '')
     $query_condition .= " AND Users.role_id = ".$_SESSION["role_id"];
 }
 
-if(isset($_SESSION["status_bit"]) and $_SESSION["status_bit"] != '')
-    $query_condition .= " AND Users.status_bit = ".$_SESSION["status_bit"] ;
+
+$query_status_active = '';
+
+if(isset($_SESSION["active_status"]) and $_SESSION["active_status"] != '' and $_SESSION["active_status"] == 'true')
+    $query_status_active .= "Users.status_bit = 1";
+
+$query_status_inactive = '';
+if(isset($_SESSION["inactive_status"]) and $_SESSION["inactive_status"] != '' and $_SESSION["inactive_status"] == 'true')
+    $query_status_inactive .= "Users.status_bit = 0";
+
+if($query_status_active != '' xor $query_status_inactive !='') {
+    $query_condition .= " AND ( ".$query_status_active." ".$query_status_inactive." )";
+}
+
 
 if(!(isset($_SESSION["first_name"]) and $_SESSION["first_name"] != '') and $query_condition != "")
     $query_condition = " WHERE ".substr($query_condition,4);
+
+
 
 
 if($connection)
 {
     mysqli_query($connection, 'use dashboardDB');
     $result = mysqli_query($connection, "SELECT * FROM `Users` JOIN Roles ON Roles.role_id = Users.role_id ".$query_condition);
+
 
     if(mysqli_num_rows($result)>0){
 
@@ -61,8 +76,6 @@ if($connection)
         {
 
             $temp = array();
-
-
 
             $user_name= $row["first_name"]." ".$row["last_name"];
             array_push($temp,$user_name);
@@ -93,48 +106,71 @@ if($connection)
             while($roww = mysqli_fetch_assoc($role_result))
                 array_push($temp,$roww["role_name"]);
 
-            array_push($temp,$row["date_added"]);
-            array_push($temp,$row["added_by"]);
-            array_push($temp,$row["status_bit"]);
+
+
+
+            array_push($temp,date_format(date_create($row["date_added"]),"Y/m/d"));
+
+
+            $added_by = mysqli_query($connection, "select first_name, last_name from Users where Users.user_id = ".$row["added_by"]);
+
+
+            while($roww = mysqli_fetch_assoc($added_by))
+                array_push($temp, $roww["first_name"]." ".$roww["last_name"]);
+
+            array_push($temp, $row["status_bit"]);
             array_push($filtered_records, $temp);
 
 
         }
     }
+
 }
 
-for ($i = ($page_no-1)*10; $i < min($page_no*10,count($filtered_records)); $i++) {
-    $data["filtered_items"] .= " <div class='row'>";
-    for ($j = 0; $j < count($filtered_records[0]); $j++) {
-        if ($j == 1) {
-            $str = "";
-            for ($k = 0; $k < count($filtered_records[$i][$j]); $k++) {
-                $str = $str . $filtered_records[$i][$j][$k];
 
-                if ($k != count($filtered_records[$i][$j]) - 1)
-                    $str = $str . " | ";
+if(count($filtered_records) == 0) {
+    $data["filtered_items"] = "<div class='no-data'>Sorry there is no record for given filter.</div>";
+} else {
+    for ($i = ($page_no - 1) * 10; $i < min($page_no * 10, count($filtered_records)); $i++) {
 
-            }
-            $data["filtered_items"] = $data["filtered_items"]."<div class='col-2'> " . $str . "</div>";
-        } else {
 
-            if($j == count($filtered_records[0])-1 ) {
-                if($filtered_records[$i][$j] == 1)
-                    $data["filtered_items"] = $data["filtered_items"]."<div class='col-2'> <button class='active-btn'>ACTIVE</button> </div>";
-                else
-                    $data["filtered_items"] = $data["filtered_items"]."<div class='col-2'> <button class='inactive-btn'>INACTIVE</button> </div>";
+        $data["filtered_items"] .= " <div class='row'>";
 
+        for ($j = 0; $j < count($filtered_records[$i]); $j++) {
+            if ($j == 1) {
+                $str = "";
+                for ($k = 0; $k < count($filtered_records[$i][$j]); $k++) {
+                    $str = $str . $filtered_records[$i][$j][$k];
+
+                    if ($k != count($filtered_records[$i][$j]) - 1)
+                        $str = $str . " | ";
+
+                }
+                $data["filtered_items"] = $data["filtered_items"] . "<div class='col-2'> " . $str . "</div>";
             } else {
-                $data["filtered_items"] = $data["filtered_items"]."<div class='col-2'> " . $filtered_records[$i][$j] . "</div>";
-            }
 
+
+                if ($j == count($filtered_records[$i]) - 1) {
+                    if ($filtered_records[$i][$j] == 1)
+                        $data["filtered_items"] = $data["filtered_items"] . "<div class='col-2'> <button class='active-btn'>ACTIVE</button> </div>";
+                    else
+                        $data["filtered_items"] = $data["filtered_items"] . "<div class='col-2'> <button class='inactive-btn'>INACTIVE</button> </div>";
+
+                } else {
+                    $data["filtered_items"] = $data["filtered_items"] . "<div class='col-2'> " . $filtered_records[$i][$j] . "</div>";
+                }
+
+            }
         }
+        $data["filtered_items"] = $data["filtered_items"] . "</div>";
+
+
+
     }
-    $data["filtered_items"] = $data["filtered_items"]."</div>";
 }
+
 
 $data["total_records"] = count($filtered_records);
-
 echo json_encode($data);
 
 
