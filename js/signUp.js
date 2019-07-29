@@ -1,5 +1,12 @@
 $('#signUpForm').on('submit', function (e) {
     e.preventDefault();
+
+    $($('#first_name')).removeClass('border-red');
+    $($('#last_name')).removeClass('border-red');
+    $($('#email')).removeClass('border-red');
+    $($('#password')).removeClass('border-red');
+    $($('#confirm_password')).removeClass('border-red');
+
     var first_name = ($('#first_name').val()).trim();
     var last_name = ($('#last_name').val()).trim();
     var email = ($('#email').val()).trim();
@@ -8,32 +15,57 @@ $('#signUpForm').on('submit', function (e) {
     var role_id = ($('#role_id').val()).trim();
     var added_by = 1;
 
-    if(first_name == '') {
-        $($('#signUpStatus')).removeClass('success');
-        $($('#signUpStatus')).addClass('error');
-        $('#signUpStatus').html("Please enter the first name");
-    } else if(last_name == '') {
-        $($('#signUpStatus')).removeClass('success');
-        $($('#signUpStatus')).addClass('error');
-        $($('#signUpStatus')).removeClass('success');
-        $('#signUpStatus').html("Please enter the last name");
-    } else if (email == '') {
-        $($('#signUpStatus')).removeClass('success');
-        $($('#signUpStatus')).addClass('error');
-        $('#signUpStatus').html("Please enter the email address ");
-    } else if (password == '') {
-        $($('#signUpStatus')).removeClass('success');
-        $($('#signUpStatus')).addClass('error');
-        $('#signUpStatus').html("Please enter the password");
-    } else if(confirm_password == '') {
-        $($('#signUpStatus')).removeClass('success');
-        $($('#signUpStatus')).addClass('error');
-        $('#signUpStatus').html("Please enter the password again ");
-    } else  if (password != confirm_password) {
-        $($('#signUpStatus')).removeClass('success');
-        $($('#signUpStatus')).addClass('error');
-        $('#signUpStatus').html("both password are not same !")
-    } else{
+    var flag = 0;
+
+    if(first_name == ''){
+        flag=1;
+        $($('#first_name')).addClass('border-red');
+        $($("#first_name_error_div")).html('Please Enter the First Name');
+    } else {
+        $($("#first_name_error_div")).html('');
+    }
+
+
+    if(last_name == '') {
+        flag=1;
+        $($('#last_name')).addClass('border-red');
+        $($("#last_name_error_div")).html('Please Enter the Last Name');
+    } else {
+        $($("#last_name_error_div")).html('');
+    }
+
+    if(email == '') {
+        flag=1;
+        $($('#email')).addClass('border-red');
+        $($("#email_error_div")).html('Please Enter the Email');
+    } else {
+        $($("#email_error_div")).html('');
+    }
+
+
+    if(password == '') {
+        flag=1;
+        $($('#password')).addClass('border-red');
+        $($("#password_error_div")).html('Please Enter the Password');
+    } else {
+        $($("#password_error_div")).html('');
+    }
+
+    if(confirm_password == '') {
+        flag=1;
+        $($('#confirm_password')).addClass('border-red');
+        $($("#confirm_password_error_div")).html('Please Enter the Password Again');
+    } else {
+        $($("#confirm_password_error_div")).html('');
+    }
+
+    if(password != confirm_password) {
+        flag=1;
+        $($('#confirm_password')).addClass('border-red');
+        $($("#confirm_password_error_div")).html('Both Passwords are not same !');
+    }
+
+    if(flag == 0) {
         $.post(
             "signup.php",
             {
@@ -52,7 +84,7 @@ $('#signUpForm').on('submit', function (e) {
                     $('#signUpStatus').html(return_value);
                     setTimeout(function () {
                         window.location.href = "http://localhost/dashboard/";
-                    },3000);
+                    },2000);
 
 
                 } else {
@@ -62,8 +94,8 @@ $('#signUpForm').on('submit', function (e) {
                 }
             });
     }
+});
 
-
-
-
+$("#back_to_login").click(function () {
+    window.location.href = "http://localhost/dashboard/";
 });

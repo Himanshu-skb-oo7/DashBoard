@@ -84,3 +84,23 @@ input[type="text"], input[type="email"], input[type="password"]
     border: none;
     box-shadow: 0 0 6px grey;
 }
+
+.error_div
+{
+    text-align: left;
+    height: 10px;
+    font-size: 10px;
+    color:red;
+    padding: 0;
+}
+
+input.border-red
+{
+    box-shadow: 0 0 6px red;
+}
+
+#back_to_login
+{
+    margin-left: 10px;
+    background-color: #208EFB;
+}

@@ -34,6 +34,7 @@ if($connection) {
     $data["total"] = $count;
     $data["average"] = (int)( $data["total"]/($i-1) );
     $data["most_popular"] = $most_popular;
+    $data["product"] = 1;
     echo json_encode($data);
 }
 

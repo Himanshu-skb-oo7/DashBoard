@@ -47,8 +47,10 @@ function getData(page_no) {
                     if(page_num >=1 ) {
                         var i = 1;
 
-                        var prev = $("<button id='page_nav_prev' class='pagination_button btn'></button>").text("<< Previous");
-                        $("#pagination").append(prev);
+                        if(page_no>1) {
+                            var prev = $("<button id='page_nav_prev' class='pagination_button btn'></button>").text("<< Previous");
+                            $("#pagination").append(prev);
+                        }
 
                         while (i <= page_num) {
                             var app = $("<button id='page_nav_" + i + "' class='pagination_button btn'></button>").text(i);
@@ -56,9 +58,10 @@ function getData(page_no) {
                             i++;
                         }
 
-                        var next = $("<button id='page_nav_next' class='pagination_button btn '></button>").text("Next >>");
-                        $("#pagination").append(next);
-
+                        if(page_no<page_num) {
+                            var next = $("<button id='page_nav_next' class='pagination_button btn '></button>").text("Next >>");
+                            $("#pagination").append(next);
+                        }
                     }
                     $("#page_nav_"+page_no).addClass('active');
 

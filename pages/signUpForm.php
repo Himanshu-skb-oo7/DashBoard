@@ -8,6 +8,10 @@
 
 <body>
 
+
+<div id="back_button">
+    <button id="back_to_login" class="btn btn-primary">Back To Login</button>
+</div>
 <div id="wrapper" class="container">
     <form id="signUpForm">
         <legend id="signUpLegend">Sign Up Form</legend>
@@ -21,6 +25,11 @@
         </div>
 
         <div class="row">
+            <div class="col-3"></div>
+            <div id="first_name_error_div" class="error_div col-9"></div>
+        </div>
+
+        <div class="row">
             <div class="col-3">
                 Last Name
             </div>
@@ -28,8 +37,10 @@
                 <input type="text" name="last_name" class="form-control"  id="last_name">
             </div>
         </div>
-
-
+        <div class="row">
+            <div class="col-3"></div>
+            <div id="last_name_error_div" class="error_div col-9"></div>
+        </div>
         <div class="row">
             <div class="col-3">
                 Role
@@ -48,8 +59,13 @@
                 Email
             </div>
             <div class="col-9" id="email_div">
-                <input type="email" name="email" class="form-control" id="email">
+                <input name="email" class="form-control" id="email" type="email">
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-9 error_div" id="email_error_div" class="error_div"></div>
         </div>
 
         <div class="row">
@@ -59,6 +75,11 @@
             <div class="col-9" id="password_div">
                 <input type="password" name="password" class="form-control" id="password">
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3"></div>
+            <div id="password_error_div" class=" col-9 error_div"></div>
         </div>
 
         <div class="row">
@@ -72,15 +93,10 @@
 
 
         <div class="row">
-            <div class="col-3">
-                Added By
-            </div>
-            <div class="col-9">
-                <select id="added_by" class="form-control">
-                    <option value="admin">ADMIN</option>
-                </select>
-            </div>
+            <div class="col-3"></div>
+            <div id="confirm_password_error_div" class="error_div col-9"></div>
         </div>
+
         <button class="btn col-12" id="signUpButton">SignUp</button>
         <div id="signUpStatus"></div>
 

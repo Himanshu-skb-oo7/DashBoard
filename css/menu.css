@@ -30,7 +30,7 @@
 .active-menu
 {
     cursor: pointer ;
-    color:black;
+
     text-decoration: none;
 }
 
@@ -57,6 +57,27 @@ div
 .current-menu
 {
     border-left: 4px solid dodgerblue;
+    font-weight: 500;
 }
 
 
+.username
+{
+    color: dodgerblue;
+
+}
+
+.center
+{
+    text-align: center;
+    margin:0;
+    padding: 0;
+}
+
+div#skills
+{
+    background-color: #A09F9C;
+    padding: 20px;
+    color: white;
+    margin-bottom: 20px;
+}

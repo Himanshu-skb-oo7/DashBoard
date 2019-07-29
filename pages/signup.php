@@ -6,7 +6,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $role_id =  $_POST['role_id'];
 $added_by = $_POST['added_by'];
-
+session_start();
 if($connection){
     if($first_name!='' && $last_name!='' && $email!='' && $password!='') {
         mysqli_query($connection, 'use dashboardDB');
@@ -19,6 +19,7 @@ if($connection){
                     date_added, status_bit, added_by) VALUES ('$first_name', '$last_name', 
                     '$email', '$password', $role_id, '".date('Y/m/d')."' ,1,$added_by)";
             mysqli_query($connection, $sql);
+            $_SESSION['active_user'] = $email;
             echo "Signed Up Successfully !";
         }
     } else {
